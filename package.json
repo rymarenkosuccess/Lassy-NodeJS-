@@ -1,0 +1,34 @@
+{
+    "name": "the-lassy-project"
+  , "description": "Another great product from jb."
+  , "version": "1.0.0"
+  , "private": true
+  , "author": "Adrian Sanchez del C."
+  , "engines": {
+        "node": "0.8.14"
+      , "npm": "1.1.65"
+    }
+  , "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    }
+  , "dependencies": {
+      "express": "latest"
+    , "jade": "latest"
+    , "mongoose": "latest"
+    , "connect-mongo": "latest"
+    , "connect-flash": "latest"
+    , "passport": "latest"
+    , "passport-local": "latest"
+   , "passport-twitter": "latest"
+   , "passport-facebook": "latest"
+   , "passport-http-bearer": "latest"
+    , "imager": "latest"
+    , "underscore": "latest"
+    , "gzippo": "latest"
+    , "async": "latest"
+    , "nodemon": "latest"
+	 , "stripe" : "latest"
+   , "validator": "latest"
+   , "node-uuid": "latest"
+  }
+}

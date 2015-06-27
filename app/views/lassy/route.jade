@@ -1,0 +1,129 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include ../includes/head
+  link(rel="stylesheet", href="/css/leaflet.css")
+  link(rel="stylesheet", href="/css/style.css")
+  //if lte IE 8
+
+
+  //if lte IE 8
+
+  body
+    .citycover
+      include ../includes/header
+      .citycover-content.citycover-print
+       .container.container-activate-gap
+        .row
+         div
+          h1.bira-font.page-title Setting up a Lassy
+          - if(typeof(err) == 'string' ){
+            div.alert.alert-danger.signup-error
+             ul
+               li.error #{err}
+          - }
+        .bbox.map-wrapper
+          .row         
+           .span8
+            #map.map-container
+           .span4
+            .map-handler
+             article#zone-area
+              header.header
+               h1 LassyRoutes
+               p.sub You must create at least 2 LassyRoutes.
+               != "<!-- ko ifnot: add_mode() || edit_mode() -->"
+                a.btn.link-new.create-route(href="#", data-bind="click: createRoute") Create a Route
+               != "<!-- /ko -->"
+               != "<!-- ko if: add_mode -->"
+                a.btn.link-new.cancel-route(href="#", data-bind="click: cancelCreate") Cancel
+               != "<!-- /ko -->"
+               != "<!-- ko if: edit_mode -->"
+                a.btn.link-new.cancel-route(href="#", data-bind="click: modifySave") Save modified
+               != "<!-- /ko -->"
+               //- a.btn.link-new.add-zone(href="#", data-bind="click: createRoute") 
+              .content
+               ul#route-list(data-bind="foreach: routes")
+                li(data-bind="css: {selected: status()=='selected'}")
+                 span(data-bind="text: ($index()+1).toString() +'. '")
+                 a.route(href="#", data-bind="text: name(), attr:{'data-route-id':id}", data-role="edit-route") Loading...
+                 small(data-bind="text: ['(',distance(),')'].join('')")
+                 a.del-link(href="#", data-bind="attr:{'data-route-id':id}", data-role="del-route")
+                  i.icon-remove-sign.icon-white
+            .search-box
+             form
+              input(type="text", id="searchPlaceField", class="input-search", placeholder="Search by address, zip, or city and state")
+              button.btn-search.btn Search
+        .bbox
+         .row
+          .span3.offset7
+            a.btn.btn-warning.btn-large(href="/lassy/contacts/#{id}/") Next  
+      include ../includes/footer
+
+    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places")
+    script(type='text/javascript', src='/js/jquery.min.js') 
+    script(type='text/javascript', src='/js/lib/underscore-min.js')
+    script(type='text/javascript', src='/js/lib/knockout-2.2.1.js')
+
+    script(src="/js/lib/leaflet.js")
+
+    script(src="/js/lib/leaflet.draw/Tooltip.js")
+    script(src="/js/lib/leaflet.draw/Draw.Feature.js")
+    script(src="/js/lib/leaflet.draw/Draw.Polyline.js")
+
+    script(src="/js/lib/leaflet.draw/ext/LatLngUtil.js")
+    script(src="/js/lib/leaflet.draw/ext/LineUtil.Intersect.js")
+    script(src="/js/lib/leaflet.draw/ext/Polyline.Intersect.js")
+    script(src="/js/lib/leaflet.draw/edit/Edit.Poly.js")
+    script
+     //centers the map in Los Angeles area
+     var map = L.map('map', {center: new L.LatLng(-118.24368, 34.05223), zoom: 12 });
+      // add an OpenStreetMap tile layer
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      window.map = map;
+      window.lid = "#{id}";
+
+    script(type='text/javascript', src='/js/api.js')
+    script(type='text/javascript', src='/js/zone.js')
+    script(type='text/javascript', src='/js/route.js')
+    script
+      $(function(){
+        var zoneVM = window['zoneVM'];
+        var routeVM = window['routeVM'];
+        //ko.applyBindings(zoneVM, document.getElementById('zone-area'));
+        zoneVM.loadZones();
+        ko.applyBindings(routeVM, document.getElementById('route-area'));
+        routeVM.loadRoutes();
+      }); 
+    
+    script
+      
+      function initialize () {
+        var input = document.getElementById('searchPlaceField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            console.log('Not found');
+            return;
+          }
+          if (place.geometry.location) {
+            console.log(place.geometry.location);
+            var latlng = new L.LatLng(place.geometry.location.jb, place.geometry.location.kb);
+            window.map.setView(latlng, 15);            
+          }
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    script(type="text/javascript")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

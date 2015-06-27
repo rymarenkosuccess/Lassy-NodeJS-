@@ -1,0 +1,35 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include ../includes/head
+  body
+    .citycover
+      include ../includes/header
+      .citycover-content.citycover-print
+       .container.container-gap
+        div.bbox
+          h1.bira-font Join the Village
+          h4 Sign up in seconds. No credit card required!
+          - if(typeof(errors) == 'object' ){
+            div.alert.alert-danger.signup-error
+             ul
+              each error in errors
+               li.error #{error.type}
+          - }
+          form.signup-form(action="signup", method="POST")
+            .control-group
+              //label.control-label Mobile Number:
+              .controls
+                input.phone(type="text", name="mobile", placeholder="Mobile Number", maxlength="10", required, autofocus, value="")
+            .control-group
+              //label.control-label Zip Code:
+              .controls
+                input.zip(type="text", name="zip", placeholder="Zip Code", maxlength="5", required)
+            .control-group
+              //label.control-label Password:
+              .controls
+                input(type="password", name="pass", placeholder="Password", required)
+            .form-actions
+              input(type="submit", class="btn btn-primary", value="Create Account")
+      .push
+      include ../includes/footer
+      include ../includes/foot

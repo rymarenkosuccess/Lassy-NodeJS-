@@ -1,0 +1,9 @@
+node_modules/
+logs/
+pids/
+.DS_Store
+!.gitignore
+node_modules
+upload
+public/child-images
+config/config.js

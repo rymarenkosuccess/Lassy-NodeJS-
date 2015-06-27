@@ -1,0 +1,229 @@
+/* Mixins */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+/* Style goes here */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.map-container {
+  height: 600px;
+  width: 640px;
+  position: relative;
+
+}
+.map-wrapper
+{
+  text-shadow: none;
+  padding: 0;
+}
+.search-box {
+  position: absolute;
+  display: block;
+  padding: 15px 10px;
+  height: 30px;
+  width: 410px;
+  top: 15px;
+  left: 54%;
+  margin-left: -400px;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,.45);
+  -moz-box-shadow: 2px 2px 2px rgba(0,0,0,.45);
+  box-shadow: 2px 2px 2px rgba(0,0,0,.45);
+}
+.search-box form {
+  margin: 0;
+  padding: 0;
+}
+
+.search-box .input-search {
+  width: 300px;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid #7E7E7E;
+  background: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  margin: 0 5px 0 0;
+  border: 1px solid #ff9d33;
+}
+.search-box .input-search:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+.search-box .btn-search {
+  background: #00caf5; /* Old browsers */
+  background: -moz-linear-gradient(top,  #00caf5 0%, #009dea 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00caf5), color-stop(100%,#009dea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #00caf5 0%,#009dea 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00caf5', endColorstr='#009dea',GradientType=0 ); /* IE6-9 */
+
+  padding: 5px 15px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.map-handler {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  right: 0;
+  top: 0;
+}
+.map-handler .header {
+  display: block;
+  font-family: 'Bira';
+  font-weight: normal;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  *zoom: 1;
+  text-shadow: 1px 2px 1px #000;
+  border-bottom: 1px solid #444;
+}
+
+.map-handler .header .sub {
+  display: block;
+  font-family: Helvetica;
+  font-size: 14px; 
+  color: #FFF;
+  padding: 10px;
+  *zoom: 1;
+  text-shadow: 1px 2px 1px #000;
+}
+
+.map-handler .header h1 {
+  margin: 0;
+}
+.map-handler .header .link-new {
+  font-family: Helvetica;
+  font-size: 14px;
+  background: #00caf5; /* Old browsers */
+  background: -moz-linear-gradient(top,  #00caf5 0%, #009dea 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00caf5), color-stop(100%,#009dea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #00caf5 0%,#009dea 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #00caf5 0%,#009dea 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00caf5', endColorstr='#009dea',GradientType=0 ); /* IE6-9 */
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 2px;
+}
+.map-handler .header:before,
+.map-handler .header:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.map-handler .header:after {
+  clear: both;
+}
+.map-handler .content {
+  position: relative;
+  min-height: 350px;
+  padding: 5px;
+}
+.map-handler .content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.map-handler .content ul li {
+  padding: 3px 0;
+  margin: 10px 0;
+  border-bottom: 1px solid #333;
+}
+.map-handler .content ul li .zone {
+  color: #FFF;
+  text-decoration: none;
+}
+.leaflet-container a.update-zone{color: #fff;}
+.leaflet-popup-content-wrapper{ color: #000;}
+.map-handler .content ul li .del-link {
+  float: right;
+}
+.map-handler .content ul li.highlighted .zone,
+.map-handler .content ul li:hover .zone {
+  color: #08c;
+}
+.map-handler .content ul li.selected .zone {
+  color: #EA6200;
+}
+.map-handler .content .notification {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #363636;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+.map-handler .content .notification p {
+  margin-top: 50%;
+  text-align: center;
+}
+.del-zone {
+  position: absolute;
+  top: 110px;
+  left: 12px;
+}
+.del-zone img {
+  cursor: pointer;
+}
+.leaflet-popup-content-wrapper {
+  *zoom: 1;
+  width: 250px;
+}
+.leaflet-popup-content-wrapper:before,
+.leaflet-popup-content-wrapper:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.leaflet-popup-content-wrapper:after {
+  clear: both;
+}
+.zone-block {
+  float: left;
+  width: 49%;
+  margin-left: 1%;
+}
+.zone-block input {
+  width: 100px;
+  padding: 3px 3px;
+}
+.leaflet-popup-content {
+  margin: 14px 10px;
+}
+.hide {
+  display: none;
+}

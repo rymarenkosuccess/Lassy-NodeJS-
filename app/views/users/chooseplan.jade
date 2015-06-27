@@ -1,0 +1,90 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include ../includes/head
+  body
+    .citycover
+      include ../includes/header
+      .citycover-content.citycover-print
+       .container.container-activate-gap
+        .row
+         div
+          h1.bira-font.page-title Choose a Monthly Plan
+        .row
+         div
+          .bbox
+           
+           .row
+             .tcwrap
+              p.sprint All plans have our full suite of features and support.<br>The only difference is how many Lassy devices you will need(1 per child)
+              input.customcheck.prettyCheckable(type="radio", checked="checked", name="userplan", value="bronze",  data-label="1-4 Lassy Devices&nbsp;<span class='price-color'>($5/month)</span>")
+              input.customcheck.prettyCheckable(type="radio",  name="userplan", value="silver", data-label="5-9 Lassy Devices&nbsp;<span class='price-color'>($10/month)</span>")
+              input.customcheck.prettyCheckable(type="radio",  name="userplan", value="gold", data-label="10+ Lassy Devices&nbsp;<span class='price-color'>(Contact Us)</span>")
+              p.sprint Your plan allows up to <span class="blue">4 Lassy Devices</span> at once.
+        .row.card_section
+         div
+          .bbox
+           .row
+             form#chooseplan-form.card-form(action="/user/plan", method="POST") 
+              .card_left
+               .tcwrap
+                img(src="/img/visa.png")
+                img(src="/img/card.png")
+                img(src="/img/discover.png")
+                img(src="/img/express.png")
+              .card_right
+                .control-group
+                  label.control-label Card Number:
+                  .controls
+                    input(type="text", name="cardnumber", value="", data-stripe="number")
+                .control-group
+                  label.control-label Expiration Date:
+                  .controls
+                    input.month(type="text", name="expire_month", placeholder="mm", data-stripe="exp-month")
+                    input.year(type="text", name="expire_year", placeholder="yyyy", data-stripe="exp-year")
+                .control-group
+                  label.control-label Security Code:
+                  .controls
+                    input(type="text", name="security", size="4", data-stripe="cvc", style="width:40px;")
+              .agree-term
+                input.customcheck(type="checkbox", id="agree_term", name="agree_term", data-label="I agree to the <span class='blue' style='text-decoration:underline;'>terms & conditions</span>")
+                input(type="hidden", name="redirect", value="REDIRECT_URL")
+                input.btn.btn-warning.btn-large(type="submit", value="GO")
+      include ../includes/footer
+
+    div#congrats-popup.modal.fade.hide
+     .loader-wrap
+      h6 Sending...
+      img(src="/img/ajax-loader.gif")
+     .alert.alert-danger.alert-congrats(style="margin:10px; display: none;")
+      p There was an error while activating your account. Please try again.
+      a.btn.okay-btn(href="#") Ok
+     .modal-body(style="display: none;")
+      h2.bira-font Congratulations!
+      h3.bira-font You have joined the Lassy Village
+      form#update-form(action="/user/update", method="POST")
+       p Tell us your name so we know what to call you:
+       .alert.alert-danger(style="display: none;")
+        p.alert-text
+       input.activation-code(type="hidden", name="code")
+       input(type="text", name="fullname", placeholder="Full Name")
+       input(type="text", name="email", placeholder="Email")
+       p
+        input.btn.resend-btn(type="submit", value="Done")
+    .modal-backdrop.fade.hide
+    script(type="", src="https://js.stripe.com/v2/")   
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/bootbox.js')
+    script(type='text/javascript', src='/js/jquery.maskedinput.min.js')    
+    script(type='text/javascript', src='/js/prettyCheckable.js')
+    script(type='text/javascript', src='/js/chooseplan.js')
+    script(type="text/javascript")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25468002-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

@@ -1,0 +1,22 @@
+header#header
+  .navbar(role='navigation')
+    .navbar-inner
+      .container
+        div
+         div
+          a.brand(href='/')
+           img(src="/img/lassy-logo.png")
+         div
+           ul.social-list.pull-right
+             li
+              a(href="http://www.facebook.com/TheLassyProject", target="_blank")
+               span.social.fb
+             li
+              a(href="http://twitter.com/TheLassyProject", target="_blank")
+               span.social.tw
+           - if(typeof(user) != "undefined") {
+            .user-greetings.pull-right
+             span.welcome Welcome,
+             span.user-name=user.name
+             a(href="/user/dashboard") My Account
+           - }

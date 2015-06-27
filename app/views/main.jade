@@ -1,0 +1,73 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include includes/head
+  body
+    .childcover
+      //include includes/header
+      .citycover-print.container-home-gap
+       include includes/header
+       .container
+         div 
+          div
+            div(style="position: relative;")
+             h1.bira-font Help us Prevent Child Abductions
+             .watch-video.bira-font
+              span Watch<br/> our Video
+              img(src="/img/wv.png")
+             .row-fluid.video-box
+                .videoWrapper
+                    iframe(src="http://player.vimeo.com/video/59813190", width="500", height="281", frameborder="0", webkitAllowFullScreen, mozallowfullscreen, allowFullScreen)
+         div
+          .span3-1
+           .bbox.square.box-head.learn
+            h2.bira-font Learn More
+            //-
+                img.tri-icon(src="/img/yellow-tri.png")
+                p.sprint <span class="blue">Lorem itpsum</span> dolor sit amet, consectetur adipisicing elit, 
+                  | sed do eiusmod tempor incididunt ut labore et dolore <span class="orange">magna aliqua.</span> 
+                  | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+          .span3-1
+           .bbox.square.box-head.join
+            h2.bira-font Join the Village            
+            //img.tri-icon(src="/img/yellow-tri.png")
+            p.sprint(style="text-align:center") <span class="blue">The bigger the village,&nbsp;</span><span class="orange">the safer the children.</span>
+            .signup-ribbon
+          .span3-1
+           .bbox.square.box-head.blog
+            h2.bira-font Blog
+            //-
+                img.tri-icon(src="/img/yellow-tri.png")
+                p.sprint <span class="blue">Lorem itpsum</span> dolor sit amet, consectetur adipisicing elit, 
+                  | sed do eiusmod tempor incididunt ut labore et dolore <span class="orange">magna aliqua.</span> 
+                  | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+      .push
+      include includes/footer
+
+      script(type='text/javascript', src='/js/jquery.min.js')      
+      script(type="text/javascript")
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-25468002-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      script(type="text/javascript")
+        $(document).ready(function(){
+          /*
+          $('.box-head').hover(function(e){
+            var $el = $(e.currentTarget)
+            $el.find('p.sprint').toggle()
+            $el.find('img.tri-icon').toggle()         
+          });
+          */
+          $('.box-head').click(function(e){
+              var $el = $(e.currentTarget)
+              if($el.hasClass('blog')) window.location.href = "/blog";
+              else if($el.hasClass('join')) window.location.href = "/signup";
+              else if($el.hasClass('learn')) window.location.href = "/learn";
+          });
+
+        });

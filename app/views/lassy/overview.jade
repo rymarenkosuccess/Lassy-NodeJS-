@@ -1,0 +1,88 @@
+!!! 5
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml', xmlns:fb='https://www.facebook.com/2008/fbml', itemscope='itemscope', itemtype='http://schema.org/Product')
+  include ../includes/head
+  body
+    .citycover
+      include ../includes/header
+      .citycover-content.citycover-print
+       .container.container-activate-gap
+        .row
+         div
+          h1.bira-font.page-title Setting up a new Lassy
+          - if(typeof(err) == 'string' ){
+            div.alert.alert-danger.signup-error
+             ul
+               li.error #{err}
+          - }
+        .row.overview_section
+         div
+          .bbox
+           .row-fluid
+            form(action="/lassy/zone/"+id, method="POST", enctype="multipart/form-data")
+             ul.thumbnails
+              li.span7
+               h3.bira-font Child Profile
+                a(href='/lassy/'+id)
+                 img(src="/img/update_icon.png") 
+               div.span8
+                - if (typeof(photo) == 'string')
+                 img(src='/child-images/'+photo, width="210", height="260", id="preview_pic") 
+                - else
+                 img(src="/img/default_pic.png", width="210", height="260", id="preview_pic") 
+                .pic_field
+                 img(src="/img/changepic_btn.png", id="choose_img")
+                input(type="file", name="photo", id="photo_file")
+               - if(typeof(stats) == 'object' )
+                div.span3
+                 p #{name}
+                 p #{stats.age}
+                 p #{stats.height}
+                 p #{stats.weight}
+                 p #{stats.haircolor}
+                 p #{stats.eyecolor}
+                 p #{stats.gender}
+                 p #{stats.medical_conditions}
+              li.span4
+               h3.bira-font Lassy Zones
+                a(href='/lassy/zone/'+id)
+                 img(src="/img/update_icon.png") 
+               div
+                - if(typeof(zones) == 'object' )
+                 - each zone, i in zones
+                  p 
+                   a(href="#", class="btn btn-primary") #{zone.name}
+              li.span7
+               h3.bira-font Parents List
+                a(href='/lassy/contacts/'+id)
+                 img(src="/img/update_icon.png") 
+               div.parentbg
+                - if(typeof(notifiers) == 'object' )
+                 - each notifier, i in notifiers
+                  p #{notifier.name}
+              li.span4
+               h3.bira-font Lassy Routes
+                a(href='/lassy/routes/'+id)
+                 img(src="/img/update_icon.png") 
+             div
+              input.btn.btn-warning.btn-large(type="submit", value="Save Lassy")
+      include ../includes/footer
+
+    
+    script(type='text/javascript', src='/js/jquery.min.js')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/bootbox.js')
+    script(type='text/javascript', src='/js/jquery.maskedinput.min.js')
+    script(type='text/javascript', src='/js/jquery.exif.js')
+    script(type='text/javascript', src='/js/jquery.canvasResize.js')
+    script(type='text/javascript', src='/js/canvasResize.js')
+    script(type='text/javascript', src='/js/picchoose.js')
+    script(type="text/javascript")
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25468002-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
